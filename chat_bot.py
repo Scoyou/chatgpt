@@ -12,7 +12,6 @@ class ChatBot:
 
   def save_user_message(self, user_msg):
     self.messages.insert_one({"role": "user", "content": user_msg})
-    print(user_msg)
 
   def save_assistant_message(self, assistant_msg):
     self.messages.insert_one({"role": "assistant", "content": assistant_msg})
