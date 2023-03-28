@@ -19,15 +19,20 @@ class ChatBot:
     print(assistant_msg)
 
   def get_all_messages(self):
-    collection = self.messages
-    return collection.find().sort('_id', -1)
+    collection = self.messages.find({}, {"_id":0}).sort('_id', 1)
+    message_array = []
+    for x in collection:
+      message_array.append(x)
+    return message_array
+  
+  def delete_all_messages(self):
+    result = self.messages.delete_many({})
+    print(result.deleted_count, " documents deleted.")
 
   def run(self, user_msg):
     response = openai.ChatCompletion.create(
       model=CHAT_GPT_MODEL,
       # TODO: get_all_messages needs to go here in the future
-      messages=[
-        {"role": "user", "content": user_msg},
-      ]
+      messages=self.get_all_messages()
     )
     return response['choices'][0]['message']['content']
