@@ -8,6 +8,7 @@ ChatGPT-CLI is a command-line interface (CLI) app that uses the ChatGPT chat col
 - Easy to use command-line interface
 - Responses appear in the terminal
 - Messages between user and chatGPT are persisted in a Mongodb database
+    - Messages can be deleted anytime by typing 'delete all messages'
 
 ## Installation
 
