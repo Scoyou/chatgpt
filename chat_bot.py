@@ -31,7 +31,6 @@ class ChatBot:
   def run(self, user_msg):
     response = openai.ChatCompletion.create(
       model=CHAT_GPT_MODEL,
-      # TODO: get_all_messages needs to go here in the future
       messages=self.get_all_messages()
     )
     return response['choices'][0]['message']['content']
